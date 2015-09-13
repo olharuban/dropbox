@@ -1,0 +1,40 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="Suite1" verbose="1">
+    <test name="Login Test">
+        <parameter name="email"  value="YOUR_EMAIL"/>
+        <parameter name="password"  value="YOUR_PASSWORD"/>
+        <parameter name="username"  value="YOUR_NAME"/>
+        <classes>
+            <class name="dropbox.tests.AuthorizationTest">
+                <methods>
+                    <exclude name="logOut"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="UploadFile">
+        <parameter name="fileName"  value="requirements.txt"/>
+        <parameter name="folderName"  value="TestDocuments"/>
+        <classes>
+            <class name="dropbox.tests.UploadingTest"/>
+        </classes>
+    </test>
+
+    <test name="FileSearch">
+        <parameter name="fileName"  value="userData.txt"/>
+        <classes>
+            <class name="dropbox.tests.FileSearchTest"/>
+        </classes>
+    </test>
+
+    <test name="LogOut">
+        <classes>
+            <class name="dropbox.tests.AuthorizationTest">
+                <methods>
+                    <include name="logOut"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
